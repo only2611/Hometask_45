@@ -20,7 +20,7 @@ def create_task(request):
     else:
         description = request.POST.get("description")
         status =  request.POST.get("status")
-        task_data = request.POST.get("data")
-        new_task = Task.objects.create(description=description, status=status, data=task_data)
+        task_data = request.POST.get("task_data")
+        new_task = Task.objects.create(description=description, status=status, task_data=task_data)
         context = {"task": new_task}
-        return render(request, "", context)
+        return render(request, "task.html", context)
