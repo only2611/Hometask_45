@@ -6,14 +6,20 @@
 </head>
 <body>
 <h1>Create Article</h1>
-<form action="/articles/add/" method="post">
+<form action="add/" method="post">
     {% csrf_token %}
-    <label>Title:</label><br/>
-    <input type="text" name="title"/><br/>
-    <label>Text:</label><br/>
-    <textarea name="content"></textarea><br/>
-    <label>Author:</label><br/>
-    <input type="text" name="author"/><br/>
+    <label>Status:</label><br/>
+    <select name="status">
+        {% for status in statuses %}
+            <option value="{{ status.0 }}">{{ status.1 }}</option>
+        {% endfor %}
+    </select>
+<p></p>
+    <label>Description:</label><br/>
+    <input type="text" name="description"/><br/>
+<p></p>
+    <label>Data:</label><br/>
+    <input type="text" name="data"/><br/>
     <br/>
     <input type="submit" value="Send"/>
 </form>
