@@ -5,7 +5,7 @@
     <title>Create</title>
 </head>
 <body>
-<h1>Create Article</h1>
+<h1>Create task!</h1>
 <form action="add/" method="post">
     {% csrf_token %}
     <label>Status:</label><br/>
@@ -19,9 +19,11 @@
     <input type="text" name="description"/><br/>
 <p></p>
     <label>Data:</label><br/>
-    <input type="text" name="data"/><br/>
+    <input type="text" name="task_data"/><br/>
     <br/>
-    <input type="submit" value="Send"/>
+    <input type="submit" value="Create"/>
+<p></p>
+<a href="/">На главную</a>
 </form>
 </body>
 </html>

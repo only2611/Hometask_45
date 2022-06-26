@@ -5,24 +5,22 @@ from django.shortcuts import render
 
 
 # Create your views here.
-from TO_DO_list.models import STATUS
+from TO_DO_list.models import STATUS, Task
 
 
 def index_view(request):
-    query = request.GET.getlist("name", "rrrrrrrrrrr")
-    print(query)
-    context = {"name": "Need", "test": "Python"}
+    tasks = Task.objects.all()
+    context = {"tasks": tasks}
     return render(request, "index.html", context)
 
 
 def create_task(request):
     if request.method == "GET":
         return render(request, "create.html", {"statuses": STATUS})
-    # else:
-    #     context = {
-    #         "title": request.POST.get("title"),
-    #         "author": request.POST.get("author"),
-    #         "content": request.POST.get("content"),
-    #
-    #     }
-    #     return render(request, "article_view.html", context)
+    else:
+        description = request.POST.get("description")
+        status =  request.POST.get("status")
+        task_data = request.POST.get("data")
+        new_task = Task.objects.create(description=description, status=status, data=task_data)
+        context = {"task": new_task}
+        return render(request, "", context)

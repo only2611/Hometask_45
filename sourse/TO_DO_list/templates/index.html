@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="{% static "css/style.css" %}">
 </head>
 <body>
-<a href=""
+<a href="add/">Создать новую задачу</a>
+<p></p>
+<h1>Задачи</h1>
+<p></p>
+{% for task in tasks %}
+    <h3>{{ task.status }}</h3>
+{% endfor %}
 </body>
 </html>
