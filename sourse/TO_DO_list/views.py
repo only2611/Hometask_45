@@ -1,6 +1,4 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 from django.shortcuts import render
 
@@ -15,7 +13,8 @@ def index_view(request):
     return render(request, "index.html", context)
 
 def task_view(request, pk):
-    task = Task.objects.get(pk=pk)
+    # task = Task.objects.get(pk=pk)
+    task = get_object_or_404(Task, pk=pk)
     return render(request, "task.html", {"task": task})
 
 
