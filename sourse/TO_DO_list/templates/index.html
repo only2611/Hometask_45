@@ -16,7 +16,7 @@
 <p></p>
 {% for task in tasks %}
     <h3>{{ task.status }}</h3>
-    <p><a href="tasks/">Подробнее о задаче</a></p>
+    <p><a href="task/{{ task.pk }}/">Подробнее о задаче</a></p>
 {% endfor %}
 
 </body>
