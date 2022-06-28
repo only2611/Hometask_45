@@ -13,6 +13,9 @@ def index_view(request):
     context = {"tasks": tasks}
     return render(request, "index.html", context)
 
+def task_view(request):
+    pass
+
 
 def create_task(request):
     if request.method == "GET":

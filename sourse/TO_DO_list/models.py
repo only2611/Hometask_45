@@ -5,6 +5,7 @@ from django.db import models
 STATUS = [('new', 'Новая'), ('in_progress', 'В процессе'),  ('done', 'Сделано')]
 
 class Task(models.Model):
+    name_of_task = models.CharField(max_length=100, null=False, blank=False, verbose_name="Название задачи", default="python_task")
     description = models.CharField(max_length=100, null=False, blank=False, verbose_name="Описание задачи")
     status = models.CharField(max_length=100, choices=STATUS, verbose_name="Статус задачи", default="new")
     task_data = models.CharField(max_length=20, null=True, blank=True, verbose_name="Дата выполнения", default="")

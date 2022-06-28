@@ -1,0 +1,72 @@
+[
+{
+    "model": "TO_DO_list.task",
+    "pk": 1,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "most important",
+        "status": "new",
+        "task_data": "2022-10-05"
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 2,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "most",
+        "status": "in_progress",
+        "task_data": null
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 3,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "last page",
+        "status": "done",
+        "task_data": "2022-01-01"
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 4,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "����� ������",
+        "status": "new",
+        "task_data": "2022-18-01"
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 5,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "����� ������2",
+        "status": "in_progress",
+        "task_data": ""
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 6,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "report monhly",
+        "status": "done",
+        "task_data": "2022-10-05"
+    }
+},
+{
+    "model": "TO_DO_list.task",
+    "pk": 7,
+    "fields": {
+        "name_of_task": "python_task",
+        "description": "wwedew",
+        "status": "done",
+        "task_data": "wefwer"
+    }
+}
+]
