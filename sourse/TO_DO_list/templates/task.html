@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
 <p>name - {{ task.name_of_task }}</p>
 <p>status - {{ task.status }}</p>
 <p>desc - {{ task.description }}</p>
 <p>data - {{ task.task_data }}</p>
 
 <a href="{% url "index_view" %}">На главную</a>
-</body>
-</html>
+{% endblock %}
