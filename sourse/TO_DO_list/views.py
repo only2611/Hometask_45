@@ -13,7 +13,6 @@ def index_view(request):
     return render(request, "index.html", context)
 
 def task_view(request, pk):
-    # task = Task.objects.get(pk=pk)
     task = get_object_or_404(Task, pk=pk)
     return render(request, "task.html", {"task": task})
 

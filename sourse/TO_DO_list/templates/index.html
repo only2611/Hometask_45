@@ -1,12 +1,39 @@
+{#{% extends "base.html" %}#}
+{#{% load static %}#}
+{##}
+{#{% block nav %}#}
+{#    <a class="nav-link" href="{% url "create_task" %}">Создание задачи</a>#}
+{#{% endblock %}#}
+{#{% block content %}#}
+{#<p></p>#}
+{#<h1>Задачи</h1>#}
+{#<p></p>#}
+{#{% for task in tasks %}#}
+{#    <h3>{{ task.status }}</h3>#}
+{#    <p><a href="{% url "task_view" task.pk %}">Подробнее о задаче</a></p>#}
+{#{% endfor %}#}
+{#{% endblock %}#}
+
+
 {% extends "base.html" %}
 {% load static %}
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url "create_task" %}">Создание задачи</a>
+    </li>
+{% endblock %}
 {% block content %}
-<a href="{% url "create_task" %}">Создать новую задачу</a>
-<p></p>
-<h1>Задачи</h1>
-<p></p>
-{% for task in tasks %}
-    <h3>{{ task.status }}</h3>
-    <p><a href="{% url "task_view" task.pk %}">Подробнее о задаче</a></p>
-{% endfor %}
+    <h1>Статьи</h1>
+    <div class="row">
+        {% for task in tasks %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>{{ task.status }}</h3>
+                        <p><a href="{% url "task_view" task.pk %}">Подробнее о задаче</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
