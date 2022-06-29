@@ -17,6 +17,20 @@ def task_view(request, pk):
     return render(request, "task.html", {"task": task})
 
 
+def update_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == "GET":
+        return render(request, "update.html", {"task": task})
+    else:
+        task.name_of_task = request.POST.get("name_of_task")
+        task.description = request.POST.get("description")
+        task.status =  request.POST.get("status")
+        task.task_data = request.POST.get("task_data")
+        task.save()
+        return redirect("task_view", pk=task.pk)
+
+
+
 def create_task(request):
     if request.method == "GET":
         return render(request, "create.html", {"statuses": STATUS})
