@@ -6,7 +6,7 @@
     <label>Status:</label><br/>
     <select name="status">
         {% for value, status in statuses %}
-            <option value="{{ value }}">{{ status }}</option>
+            <option value="{{ task.value }}">{{ task.status }}</option>
         {% endfor %}
     </select>
 <p></p>

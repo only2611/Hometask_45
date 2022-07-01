@@ -33,7 +33,7 @@ def delete(request, pk):
 def update_task(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == "GET":
-        return render(request, "update.html", {"task": task})
+        return render(request, "update.html", {"task": task, "statuses": STATUS})
     else:
         task.name_of_task = request.POST.get("name_of_task")
         task.description = request.POST.get("description")
