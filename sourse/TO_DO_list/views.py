@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 
 # Create your views here.
+from TO_DO_list.forms import TaskForm
 from TO_DO_list.models import STATUS, Task
 
 
@@ -33,24 +34,38 @@ def delete(request, pk):
 def update_task(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == "GET":
-        return render(request, "update.html", {"task": task, "statuses": STATUS})
+        form = TaskForm(initial={
+            "name_of_task": task.name_of_task,
+            "description": task.description,
+            "status": task.status,
+            "task_data": task.task_data,
+        })
+        return render(request, "update.html", {"form": form})
     else:
-        task.name_of_task = request.POST.get("name_of_task")
-        task.description = request.POST.get("description")
-        task.status =  request.POST.get("status")
-        task.task_data = request.POST.get("task_data")
-        task.save()
-        return redirect("task_view", pk=task.pk)
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            task.name_of_task = form.cleaned_data.get("name_of_task")
+            task.description = form.cleaned_data.get("description")
+            task.status = form.cleaned_data.get("status")
+            task.task_data = form.cleaned_data.get("task_data")
+            task.save()
+            return redirect("task_view", pk=task.pk)
+        return render(request, "update.html", {"form": form})
 
 
 
 def create_task(request):
     if request.method == "GET":
-        return render(request, "create.html", {"statuses": STATUS})
+        form = TaskForm()
+        # return render(request, "create.html", {"statuses": STATUS})
+        return render(request, "create.html", {"form": form})
     else:
-        name_of_task = request.POST.get("name_of_task")
-        description = request.POST.get("description")
-        status =  request.POST.get("status")
-        task_data = request.POST.get("task_data")
-        new_task = Task.objects.create(name_of_task=name_of_task, description=description, status=status, task_data=task_data)
-        return redirect("task_view", pk=new_task.pk)
+        form = TaskForm(data=request.POST)
+        if form.is_valid():
+            name_of_task = form.cleaned_data.get("name_of_task")
+            description = form.cleaned_data.get("description")
+            status =  form.cleaned_data.get("status")
+            task_data = form.cleaned_data.get("task_data")
+            new_task = Task.objects.create(name_of_task=name_of_task, description=description, status=status, task_data=task_data)
+            return redirect("task_view", pk=new_task.pk)
+        return render(request, "create.html", {"form": form})

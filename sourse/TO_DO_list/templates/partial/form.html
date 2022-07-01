@@ -3,21 +3,33 @@
 
 
 {% csrf_token %}
-    <label>Status:</label><br/>
-    <select name="status">
-        {% for value, status in statuses %}
-            <option value="{{ task.value }}">{{ task.status }}</option>
-        {% endfor %}
-    </select>
-<p></p>
-<label>Task_name:</label><br/>
-    <input type="text" name="name_of_task" value="{{ task.name_of_task }}"/><br/>
-<p></p>
-    <label>Description:</label><br/>
-    <input type="text" name="description" value="{{ task.description }}"/><br/>
-<p></p>
-    <label>Data:</label><br/>
-    <input type="text" name="task_data" value="{{ task.task_data }}"/><br/>
-    <br/>
-    <input type="submit" value="Update"/>
-<p></p>
+
+{#{{ form.as_p }}#}
+
+
+{% for field in form %}
+   <p><label for="{{ field.id_for_label }}">{{ field.label }}</label></p>
+   {% for error in field.errors %}
+       <p class="form-error">{{ error }}</p>
+   {% endfor %}
+   <p>{{ field }}</p>
+{% endfor %}
+<input type="submit" value="{{ button_text }}"/>
+{#    <label>Status:</label><br/>#}
+{#    <select name="status">#}
+{#        {% for value, status in statuses %}#}
+{#            <option value="{{ task.value }}">{{ task.status }}</option>#}
+{#        {% endfor %}#}
+{#    </select>#}
+{#<p></p>#}
+{#<label>Task_name:</label><br/>#}
+{#    <input type="text" name="name_of_task" value="{{ task.name_of_task }}"/><br/>#}
+{#<p></p>#}
+{#    <label>Description:</label><br/>#}
+{#    <input type="text" name="description" value="{{ task.description }}"/><br/>#}
+{#<p></p>#}
+{#    <label>Data:</label><br/>#}
+{#    <input type="text" name="task_data" value="{{ task.task_data }}"/><br/>#}
+{#    <br/>#}
+
+{#<p></p>#}

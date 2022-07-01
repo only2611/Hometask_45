@@ -2,25 +2,7 @@
 {% block content %}
 <h1>Update task!</h1>
 <form action="" method="post">
-    {% csrf_token %}
-    <label>Status:</label><br/>
-    <select name="status">
-        {% for value, status in statuses %}
-            <option value="{{ task.value }}">{{ task.status }}</option>
-        {% endfor %}
-    </select>
-<p></p>
-<label>Task_name:</label><br/>
-    <input type="text" name="name_of_task" value="{{ task.name_of_task }}"/><br/>
-<p></p>
-    <label>Description:</label><br/>
-    <input type="text" name="description" value="{{ task.description }}"/><br/>
-<p></p>
-    <label>Data:</label><br/>
-    <input type="text" name="task_data" value="{{ task.task_data }}"/><br/>
-    <br/>
-    <input type="submit" value="Update"/>
-<p></p>
+    {% include "partial/form.html" with button_text="Update"%}
 </form>
     <a href="{% url "index_view" %}">На главную</a>
 {% endblock %}
