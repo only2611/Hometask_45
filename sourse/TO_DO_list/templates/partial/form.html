@@ -1,8 +1,8 @@
-{% extends "base.html" %}
-{% block content %}
-<h1>Update task!</h1>
-<form action="" method="post">
-    {% csrf_token %}
+
+
+
+
+{% csrf_token %}
     <label>Status:</label><br/>
     <select name="status">
         {% for value, status in statuses %}
@@ -21,6 +21,3 @@
     <br/>
     <input type="submit" value="Update"/>
 <p></p>
-</form>
-    <a href="{% url "index_view" %}">На главную</a>
-{% endblock %}
